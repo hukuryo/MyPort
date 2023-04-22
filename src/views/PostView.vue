@@ -26,22 +26,6 @@
                         <label class="form-label">説明</label>
                         <textarea class="form-control" name="PortContent" placeholder="SiteExplanation" v-model="PortContent"></textarea>                
                     </div>
-                    <!-- UseLanguage -->
-                    <div class="col-md-5">
-                        <label for="country" class="form-label">使用言語</label>
-                        <select class="form-select" id="country" name="UseLanguage" required="" v-model="UseLanguage">
-                            <option value="">言語</option>
-                            <option>JavaScript</option>
-                        </select>
-                    </div>
-                    <!-- UseFramework -->
-                    <div class="col-md-5">
-                        <label for="country" class="form-label">フレームワーク等</label>
-                        <select class="form-select" id="country" name="UseFramework" required="" v-model="UseFramework">
-                            <option value="">言語</option>
-                            <option>Vue.js</option>
-                        </select>
-                    </div>
                 </div>
                 <hr class="my-4">
                 <button class="w-100 btn btn-primary btn-lg" type="submit" @click="save">ポートフォリをクリップ</button>
@@ -59,9 +43,7 @@ export default {
         return {
             PortName: "",
             PortUrl: "",
-            PortContent: "",
-            UseLanguage: "",
-            UseFramework: ""
+            PortContent: ""
         }
     },
     methods: {
