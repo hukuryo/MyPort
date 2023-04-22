@@ -14,7 +14,7 @@
                         </div>
                     </div>
                     <div class="col-12">
-                        <label for="email" class="form-label">URL</label><br>
+                        <label class="form-label">URL</label><br>
                         https://google.com
                     </div>
                     <div class="col-12">

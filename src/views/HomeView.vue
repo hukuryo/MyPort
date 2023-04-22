@@ -10,7 +10,7 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <router-link class="btn btn-sm btn-outline-secondary" to="/post/1">View</router-link>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                  <router-link class="btn btn-sm btn-outline-secondary" to="/edit/:id">Edit</router-link>
                 </div>
                 <small class="text-muted">作成日</small>
               </div>
@@ -24,7 +24,7 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <router-link class="btn btn-sm btn-outline-secondary" to="/post/1">View</router-link>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                  <router-link class="btn btn-sm btn-outline-secondary" to="/edit/:id">Edit</router-link>
                 </div>
                 <small class="text-muted">作成日</small>
               </div>

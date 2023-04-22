@@ -2,56 +2,73 @@
 <div class="container">
 <main>
     <div class="py-5 text-center">    
-        <h2>ポートフォリオ保存ペーシ</h2>
+        <h2>ポートフォリオ保存ページ</h2>
         <p class="lead">作成したポートフォリオを保存する</p>
     </div>
     <div class="form-body">
         <div class="">
-            <form class="needs-validation" novalidate="">
-            <div class="row g-3">
-                <div class="col-12">
-                    <label for="username" class="form-label">ポートフォリオの名前</label>
-                    <div class="input-group has-validation">
-                        <input type="text" class="form-control" id="username" placeholder="PortFolioName" required="">                
+            <form class="needs-validation" novalidate="" action="http://localhost:3000/api/port/save" method="POST">
+                <div class="row g-3">
+                    <!-- PortName -->
+                    <div class="col-12">
+                        <label for="port-name" class="form-label">ポートフォリオの名前</label>
+                        <div class="input-group has-validation">
+                            <input type="text" class="form-control" id="PortName" name="PortName" placeholder="PortFolioName" v-model="PortName">                
+                        </div>
+                    </div>
+                    <!-- PortUrl -->
+                    <div class="col-12">
+                        <label for="email" class="form-label">URL</label>
+                        <input type="email" class="form-control" name="PortUrl" placeholder="SiteURL" v-model="PortUrl">
+                    </div>
+                    <!-- PortContent -->
+                    <div class="col-12">
+                        <label class="form-label">説明</label>
+                        <textarea class="form-control" name="PortContent" placeholder="SiteExplanation" v-model="PortContent"></textarea>                
+                    </div>
+                    <!-- UseLanguage -->
+                    <div class="col-md-5">
+                        <label for="country" class="form-label">使用言語</label>
+                        <select class="form-select" id="country" name="UseLanguage" required="" v-model="UseLanguage">
+                            <option value="">言語</option>
+                            <option>JavaScript</option>
+                        </select>
+                    </div>
+                    <!-- UseFramework -->
+                    <div class="col-md-5">
+                        <label for="country" class="form-label">フレームワーク等</label>
+                        <select class="form-select" id="country" name="UseFramework" required="" v-model="UseFramework">
+                            <option value="">言語</option>
+                            <option>Vue.js</option>
+                        </select>
                     </div>
                 </div>
-
-                <div class="col-12">
-                    <label for="email" class="form-label">URL</label>
-                    <input type="email" class="form-control" id="email" placeholder="SiteURL">
-                </div>
-                <div class="col-12">
-                    <label class="form-label">説明</label>
-                    <textarea class="form-control" placeholder="SiteExplanation"></textarea>                
-                </div>
-
-                <div class="col-md-5">
-                    <label for="country" class="form-label">使用言語</label>
-                    <select class="form-select" id="country" required="">
-                        <option value="">言語</option>
-                        <option>JavaScript</option>
-                    </select>
-                </div>
-                <div class="col-md-5">
-                    <label for="country" class="form-label">フレームワーク等</label>
-                    <select class="form-select" id="country" required="">
-                        <option value="">言語</option>
-                        <option>Vue.js</option>
-                    </select>
-                </div>
-            </div>
-            <hr class="my-4">
-            <button class="w-100 btn btn-primary btn-lg" type="submit">ポートフォリをクリップ</button>
+                <hr class="my-4">
+                <button class="w-100 btn btn-primary btn-lg" type="submit" @click="save">ポートフォリをクリップ</button>
             </form>
         </div>
     </div>
 </main>
-
 </div>
 </template>
+
 <script>
 export default {
-    
+    name: 'PortView',
+    data() {
+        return {
+            PortName: "",
+            PortUrl: "",
+            PortContent: "",
+            UseLanguage: "",
+            UseFramework: ""
+        }
+    },
+    methods: {
+        save(){
+            this.$router.push('/');
+        }
+    }
 }
 </script>
 <style scoped>

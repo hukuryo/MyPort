@@ -11,7 +11,7 @@
           <li ><router-link class="nav-link px-2 text-secondary" to="/post">Post</router-link></li>
         </ul>
         <div class="text-end">          
-          <button type="button" class="btn btn-warning">ログアウト</button>
+          <button type="button" class="btn btn-danger">ログアウト</button>
         </div>
       </div>
     </div>

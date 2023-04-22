@@ -38,5 +38,6 @@
             </div>
         </div>    
     </div>
+    <button type="button" class="btn btn-success">プロフィール編集</button>
 </main>
 </template>
