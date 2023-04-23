@@ -33,10 +33,12 @@
         </div>
     </div>
 </main>
+<button @click="reception">JSONデータをもらう</button>
 </div>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
     name: 'PortView',
     data() {
@@ -49,6 +51,15 @@ export default {
     methods: {
         save(){
             this.$router.push('/');
+        },
+        reception(){
+        axios.get("http://localhost:3000/api/port/get")
+            .then(response => {
+            console.log(response.data)
+            })
+            .catch(error => {
+            console.log(error)
+            })
         }
     }
 }
