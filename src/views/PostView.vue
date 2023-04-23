@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+// import axios from 'axios'
 export default {
     name: 'PortView',
     data() {
@@ -52,15 +52,6 @@ export default {
         save(){
             this.$router.push('/');
         },
-        reception(){
-        axios.get("http://localhost:3000/api/port/get")
-            .then(response => {
-            console.log(response.data)
-            })
-            .catch(error => {
-            console.log(error)
-            })
-        }
     }
 }
 </script>

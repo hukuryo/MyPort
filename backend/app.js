@@ -12,8 +12,24 @@ app.use(cors({
   credentials: true
 }));
 
+const lll = app.get('/api/port/get', (req, res) => {
+  try{
+      //データを取りだす
+      const bufferData = fs.readFileSync('ports.json')
+      // データを文字列に変換
+      const dataJSON = bufferData.toString()
+      //JSONのデータをJavascriptのオブジェクトに
+      const data = JSON.parse(dataJSON)
+      console.log(data)
+      res.send(data)
+  }catch(e){
+      console.log("JSONデータなし")
+  }
+});
+
 // POSTメソッドでフォームの値を受け取る
 app.post('/api/port/save', (req, res) => {
+    console.log(lll.length)
     try{
         fs.readFile('ports.json', 'utf8', (err, data) => {
             if (err) {
@@ -22,17 +38,15 @@ app.post('/api/port/save', (req, res) => {
             }
             // ファイルをJSONパースして配列に変換する
             let arr = JSON.parse(data);
-            
             // 新しいオブジェクトを作成して配列に追加する
             arr.push({ 
+              id: lll.length + 1,
               PortName: req.body.PortName, 
               PortUrl: req.body.PortUrl, 
-              PortContent: req.body.PortContent
+              PortContent: req.body.PortContent,
             });
-            
             // 配列をJSON文字列に変換する
             let newData = JSON.stringify(arr);
-            
             // writeFileメソッドで、JSONファイルに送られてきたデータを追加する。
             fs.writeFile('ports.json', newData, 'utf8', (err) => {
                 if (err) {
@@ -47,19 +61,6 @@ app.post('/api/port/save', (req, res) => {
     }
 });
 
-app.get('/api/port/get', (req, res) => {
-  try{
-      //データを取りだす
-      const bufferData = fs.readFileSync('ports.json')
-      // データを文字列に変換
-      const dataJSON = bufferData.toString()
-      //JSONのデータをJavascriptのオブジェクトに
-      const data = JSON.parse(dataJSON)
-      console.log(data)
-      res.send(data)
-  }catch(e){
-      console.log("JSONデータなし")
-  }
-});
+
 // 3000番ポートでサーバーを起動できるようにする。
 app.listen(3000, () => console.log('Server running on port 3000'));

@@ -1,5 +1,5 @@
 <template>
-<form action="http://localhost:3000/api/v1/quiz" method="POST" >
+<form action="http://localhost:3000/api/port/save" method="POST" >
     <input type="text" name="name">
     <input type="text" name="text">
     <button type="submit">送信</button>
@@ -12,9 +12,9 @@ import axios from 'axios'
 export default {
     methods: {
         reception(){
-        axios.get("http://localhost:3000/api/v1/quiz")
+        axios.get("http://localhost:3000/api/port/get")
             .then(response => {
-            console.log(response.data)
+            console.log(response.data.length)
             })
             .catch(error => {
             console.log(error)
