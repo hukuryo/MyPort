@@ -92,7 +92,7 @@ methods: {
             console.log(response.data);
         })
         .catch((error) => {
-            console.error(error);
+            return error
         });
         this.$router.push("/");
     },

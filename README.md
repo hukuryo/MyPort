@@ -1,24 +1,13 @@
-# my-port
+## ポートフォリオ管理アプリ
 
-## Project setup
-```
-npm install
-```
+## 概要
+自分が作成したポートフォリオや、
+GitHubやQiitaのアカウントなどを管理することができるアプリケーションになっています。
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## 作った理由
+自分のポートフォリオなどをまとめられるアプリがあれば、転職活動や、自己学習などに役立つのではないかと考えたからです。
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## 使い方
+自分の、ポートフォリオや、QiitaアカウントのURLなどを保存します。
+同じサイトから、ポートフォリオなどをまとめて見られるので、
+学習に対するモチベーションアップや、転職活動などで、自分の学習意欲などをアピールすることができます。
