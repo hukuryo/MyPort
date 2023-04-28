@@ -63,7 +63,7 @@ app.post('/api/port/save', (req, res) => {
             PortContent: req.body.PortContent,
           });
           // 配列をJSON文字列に変換する
-          let newData = JSON.stringify(arr);
+          let newData = JSON.stringify(arr, null, '\t');
           // writeFileメソッドで、JSONファイルに送られてきたデータを追加する。
           fs.writeFile('ports.json', newData, 'utf8', (err) => {
             if (err) {

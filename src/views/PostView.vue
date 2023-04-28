@@ -64,7 +64,7 @@
         </div>
     </div>
     </main>
-    <button @click="reception">JSONデータをもらう</button>
+
 </div>
 </template>
 <script>
