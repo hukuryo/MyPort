@@ -28,7 +28,7 @@ const routes = [
   // ポートフォリオ詳細ページ
   {
     path: '/post/:id',
-    name: 'post/:id',
+    name: 'post',
     component: () => import('../views/PostDetailView.vue')
   },
   // ログインページ

@@ -8,8 +8,9 @@
               <p class="card-text">{{ item.PortName }}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <router-link class="btn btn-sm btn-outline-secondary" to="/post/1">View</router-link>
-                  <router-link class="btn btn-sm btn-outline-secondary" to="/edit/:id">Edit</router-link>
+
+                  <router-link :to= "{name: 'post', params: {id: item.id}}" class="btn btn-sm btn-outline-secondary" >View</router-link>
+                  <router-link :to= "{name: 'edit', params: {id: item.id}}" class="btn btn-sm btn-outline-secondary" >Edit</router-link>
                 </div>
                 <small class="text-muted">作成日</small>
               </div>
