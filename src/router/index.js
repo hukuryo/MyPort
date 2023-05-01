@@ -10,7 +10,7 @@ const routes = [
   // ポートフォリオ編集ページ
   {
     path: '/edit/:id',
-    name: 'edit',
+    name: 'postEdit',
     component: () => import('../views/EditView.vue')
   },
   // プロフィールページ
@@ -22,13 +22,13 @@ const routes = [
   // ポートフォリオ保存ページ
   {
     path: '/post',
-    name: 'post',
+    name: 'postSave',
     component: () => import('../views/PostView.vue')
   },
   // ポートフォリオ詳細ページ
   {
     path: '/post/:id',
-    name: 'post',
+    name: 'postDetail',
     component: () => import('../views/PostDetailView.vue')
   },
   // ログインページ

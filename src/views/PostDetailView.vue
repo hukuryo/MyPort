@@ -8,26 +8,18 @@
             <form class="needs-validation" novalidate="">
                 <div class="row g-3">
                     <div class="col-12">
-                        <label for="username" class="form-label">ポートフォリオの名前</label>
+                        <label for="username" class="form-label"></label>
                         <div class="input-group has-validation">
-                            Facebook
+                            {{ this.PortName }}
                         </div>
                     </div>
                     <div class="col-12">
                         <label class="form-label">URL</label><br>
-                        https://google.com
+                        {{ this.PortUrl }}
                     </div>
                     <div class="col-12">
                         <label class="form-label">説明</label><br>
-                        ポートフォリオの説明
-                    </div>
-                    <div class="col-md-5">
-                        <label for="country" class="form-label">使用言語</label><br>
-                        使用言語表示
-                    </div>
-                    <div class="col-md-5">
-                        <label for="country" class="form-label">フレームワーク等</label><br>
-                        フレームワーク等表示
+                        {{ this.PortContent }}
                     </div>
                 </div>
             </form>
@@ -36,9 +28,45 @@
 </div>
 </template>
 <script>
+import axios from 'axios';
+
 export default {
-    
-}
+    data(){
+        return {
+            // portsData: {},
+            PortName: "",
+            PortUrl: "",
+            PortContent: "",
+            errorMessage: ""
+        }
+    },
+    created() {
+        this.getPortContent()
+    },
+    methods: {
+        getPortContent(){
+            const id = parseInt(this.$route.params.id);
+            axios.get("http://localhost:3000/api/port/get")
+                .then(response => {
+                    console.log(response.data.length)
+                    for(let port_i = 0; port_i <= response.data.length; port_i++){
+                    if(id === response.data[port_i].id){
+                        this.PortName = response.data[port_i].PortName;
+                        this.PortUrl = response.data[port_i].PortUrl;
+                        this.PortContent = response.data[port_i].PortContent;
+                        break
+                    }
+                }
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+            },  
+            // }catch(e){
+            //     this.errorMessage = "ポートフォリオが登録されていません"
+            // }
+        }
+    }
 </script>
 <style scoped>
     .form-body{
