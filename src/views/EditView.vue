@@ -10,19 +10,18 @@
             <form class="needs-validation" novalidate="">
                 <div class="row g-3">
                     <div class="col-12">
-                        <label for="PortFolioName" class="form-label">ポートフォリオの名前</label>
+                        <label for="PortName" class="form-label">ポートフォリオの名前</label>
                         <div class="input-group has-validation">
-                            <input type="text" class="form-control" id="PortFolioName" placeholder="PortFolioName" v-model="PortFolioName">  
+                            <input type="text" class="form-control" id="PortName" placeholder="PortName" v-model="PortName">  
                         </div>
                     </div>
-
                     <div class="col-12">
-                        <label for="SiteUrl" class="form-label">URL</label>
-                        <input type="SiteUrl" class="form-control" id="SiteUrl" placeholder="SiteURL" v-model="SiteURL">
+                        <label for="PortUrl" class="form-label">URL</label>
+                        <input type="PortUrl" class="form-control" id="PortUrl" placeholder="PortUrl" v-model="PortUrl">
                     </div>
                     <div class="col-12">
                         <label class="form-label">説明</label>
-                        <textarea class="form-control" placeholder="SiteExplanation" v-model="SiteExplanation"></textarea>                
+                        <textarea class="form-control" placeholder="PortContent" v-model="PortContent"></textarea>                
                     </div>
                 </div>
                 <hr class="my-4">
@@ -35,13 +34,37 @@
 </div>
 </template>
 <script>
+import axios from 'axios';
+
 export default {
     data() {
         return {
-            PortFolioName: "",
-            SiteURL: "",
-            SiteExplanation: "",
+            PortName: "",
+            PortUrl: "",
+            PortContent: "",
         }
+    },
+    created() {
+        this.getPortContent()
+    },
+    methods: {
+        getPortContent(){
+            const id = parseInt(this.$route.params.id);
+            axios.get("http://localhost:3000/api/port/get")
+                .then(response => {
+                    for(let port_i = 0; port_i <= response.data.length; port_i++){
+                        if(id === response.data[port_i].id){
+                            this.PortName = response.data[port_i].PortName;
+                            this.PortUrl = response.data[port_i].PortUrl;
+                            this.PortContent = response.data[port_i].PortContent;
+                            break
+                        }
+                    }
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+        },  
     }
 }
 </script>
