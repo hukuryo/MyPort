@@ -42,6 +42,7 @@ app.get('/api/port/get', (req, res) => {
   }
 });
 
+
 // POSTメソッドでフォームの値を受け取る
 app.post('/api/port/save', (req, res) => {
   try {
@@ -78,6 +79,83 @@ app.post('/api/port/save', (req, res) => {
     console.log("error")
   }
 });
+
+async function initializeUsers(username, pass) {
+  try {
+      const data = await fs.promises.writeFile('users.json', `[{"id":1,"username":"${username}","pass":"${pass}"}]`, 'utf8');
+      return data;
+  } catch (error) {
+      console.error(error);
+  }
+}
+
+app.post('/api/user/registration', (req, res) => {
+  try {
+      async function getUserArrayLength() {
+          try {
+              const data = await fs.promises.readFile('users.json', 'utf8');
+              const myData = JSON.parse(data);
+              const arrayLength = myData.length;
+              return arrayLength;
+          } catch (error) {
+              console.error(error);
+              // ファイルが存在しない場合、配列を作成して、入力された内容を保存する。
+              initializeUsers(req.body.username, req.body.pass);
+              return 1;
+          }
+      }
+      getUserArrayLength().then((usersArrayLength) => {
+          fs.readFile('users.json', 'utf8', (err, data) => {
+              if (err) {
+                  console.error(err);
+                  return;
+              }
+              // ファイルをJSONパースして配列に変換する
+              let arr = JSON.parse(data);
+              // 新しいオブジェクトを作成して配列に追加する
+              arr.push({
+                  id: usersArrayLength + 1,
+                  username: req.body.username,
+                  pass: req.body.pass
+              });
+              // 配列をJSON文字列に変換する
+              let newData = JSON.stringify(arr, null, '\t');
+              // ファイルに書き込む
+              fs.writeFile('users.json', newData, 'utf8', (err) => {
+                  if (err) {
+                      console.error(err);
+                      return;
+                  }
+              });
+          });
+      });
+  } catch (e) {
+      console.log(e);
+  }
+});
+
+// ログイン認証
+app.post('/api/user/login', (req, res) => {
+  try {
+    const userData = fs.readFileSync('users.json');
+    const userDataJSON = userData.toString();
+    const getData = req.body;
+    const data = JSON.parse(userDataJSON);
+    //ユーザーを一人ずつ取り出して、入力された内容と比較する。   
+    for (let i = 0; i < data.length; i++) {
+      if (data[i].username === getData.username && data[i].pass === getData.pass) {
+      // フロント側に成功メッセージを送る
+        return res.status(200).send('Success');
+      }
+    }
+  //入力された内容と一致するユーザーがいなければ、失敗メッセージを返す。   
+    res.status(401).send('Authentication failed');
+  } catch (e) {
+    console.log(e);
+    res.status(500).send('Internal server error');
+  }
+});
+
 
 // 3000番ポートでサーバーを起動できるようにする。
 app.listen(3000, () => console.log('Server running on port 3000'));

@@ -33,7 +33,6 @@ import axios from 'axios';
 export default {
     data(){
         return {
-            // portsData: {},
             PortName: "",
             PortUrl: "",
             PortContent: "",
