@@ -1,21 +1,24 @@
 import { createStore } from 'vuex'
-// import axios from 'axios'
 
 export default createStore({
   state: {
+    users: []
   },
   getters: {
-    // reception(){
-    //   axios.get("http://localhost:3000/api/port/get")
-    //       .then(response => {
-    //         console.log(response.data)
-    //       })
-    //       .catch(error => {
-    //         console.log(error)
-    //       })
-    // }
+    loggedIn: (state) => {
+      return Boolean(state.username)
+    },
   },
   mutations: {
+    delete(state, id){
+      state.messages = state.messages.filter(message => message.id !== id)
+    },
+    setUsername(state, username) {
+      state.username = username
+    },
+    setPass(state, pass) {
+      state.pass = pass
+    }
   },
   actions: {
   },
