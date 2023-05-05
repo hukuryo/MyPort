@@ -25,7 +25,7 @@
                     </div>
                 </div>
                 <hr class="my-4">
-                <button class="w-100 btn btn-primary btn-lg" type="submit">編集</button>
+                <button class="w-100 btn btn-primary btn-lg" type="submit" @click="portEdit">編集</button>
             </form>
         </div>
     </div>
@@ -64,7 +64,18 @@ export default {
                 .catch(error => {
                     console.log(error)
                 })
-        },  
+        
+        },
+        portEdit(){
+            axios.put('/api/port/edit')
+            .then((response) => {
+                    console.log(response.data);
+                })
+                .catch((error) => {
+                    console.error(error);
+            });
+            this.$router.push('/');
+        }
     }
 }
 </script>
