@@ -87,6 +87,8 @@ app.put('/api/port/edit', (req, res) => {
       const id = req.body.id - 1;
       const bufferData = fs.readFileSync('ports.json');
       let data = JSON.parse(bufferData);
+      console.log(id)
+      console.log(req.body.PortName)
       data[id].PortName = req.body.PortName;
       data[id].PortUrl = req.body.PortUrl;
       data[id].PortContent = req.body.PortContent;

@@ -7,7 +7,7 @@
     </div>
     <div class="form-body">
         <div class="">
-            <form class="needs-validation" novalidate="">
+            <form class="needs-validation" novalidate="" action="http://localhost:3000/api/port/edit" method="PUT">
                 <div class="row g-3">
                     <div class="col-12">
                         <label for="PortName" class="form-label">ポートフォリオの名前</label>
@@ -64,10 +64,16 @@ export default {
                 .catch(error => {
                     console.log(error)
                 })
-        
         },
         portEdit(){
-            axios.put('/api/port/edit')
+            const id = parseInt(this.$route.params.id);
+            let portsContent = {
+                id: id,
+                PortName: this.PortName,
+                PortUrl: this.PortUrl,
+                PortContent: this.PortContent,
+            };
+            axios.put('http://localhost:3000/api/port/edit', portsContent)
             .then((response) => {
                     console.log(response.data);
                 })

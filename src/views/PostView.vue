@@ -47,19 +47,19 @@ data() {
 },
 methods: {
     save() {
-    let portsContent = {
-        id: Math.floor(Math.random() * 1000), // ランダムなIDを生成
-        PortName: this.PortName,
-        PortUrl: this.PortUrl,
-        PortContent: this.PortContent,
-    };
-    axios.post("http://localhost:3000/api/port/save", portsContent)
-        .then((response) => {
-            console.log(response.data);
-        })
-        .catch((error) => {
-            return error
-        });
+        let portsContent = {
+            id: Math.floor(Math.random() * 1000), // ランダムなIDを生成
+            PortName: this.PortName,
+            PortUrl: this.PortUrl,
+            PortContent: this.PortContent,
+        };
+        axios.post("http://localhost:3000/api/port/save", portsContent)
+            .then((response) => {
+                console.log(response.data);
+            })
+            .catch((error) => {
+                return error
+            });
         this.$router.push("/");
     },
 },
