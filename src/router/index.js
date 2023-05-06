@@ -24,6 +24,12 @@ const routes = [
     component: () => import('../views/MyPageView.vue'),
     meta: { requiresAuth: true }
   },
+  {
+    path: '/editMyPage',
+    name: 'editMyPage',
+    component: () => import('../views/EditMyPageView.vue'),
+    meta: { requiresAuth: true }
+  },
   // ポートフォリオ保存ページ
   {
     path: '/post',

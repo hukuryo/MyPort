@@ -84,14 +84,12 @@ app.post('/api/port/save', (req, res) => {
 // メッセージ編集
 app.put('/api/port/edit', (req, res) => {
   try{
-      const id = req.body.id - 1;
       const bufferData = fs.readFileSync('ports.json');
       let data = JSON.parse(bufferData);
-      console.log(id)
-      console.log(req.body.PortName)
-      data[id].PortName = req.body.PortName;
-      data[id].PortUrl = req.body.PortUrl;
-      data[id].PortContent = req.body.PortContent;
+      const editData = data[req.body.id - 1]
+      editData.PortName = req.body.PortName;
+      editData.PortUrl = req.body.PortUrl;
+      editData.PortContent = req.body.PortContent;
       const updatedJsonData = JSON.stringify(data);
       fs.writeFileSync('ports.json', updatedJsonData);
   }catch(e){

@@ -1,7 +1,7 @@
 <template>
 <main class="container">
     <div class="my-3 p-3 bg-body rounded shadow-sm">
-        <h6 class="border-bottom pb-2 mb-0">Profile</h6>
+        <h6 class="border-bottom pb-2 mb-0">プロフィール編集</h6>
         <div class="d-flex text-muted pt-3">
             <p class="pb-3 mb-0 small lh-sm border-bottom"><strong class="d-block text-gray-dark">username</strong></p>
         </div>
@@ -35,9 +35,9 @@
                 <div class="d-flex justify-content-between">
                 </div>
                 <span class="d-block">LAPRAS</span>
+                <p>sss</p>
             </div>
         </div>    
     </div>
-    <router-link class="btn btn-success" to="/editMyPage">プロフィール編集</router-link>
 </main>
 </template>
