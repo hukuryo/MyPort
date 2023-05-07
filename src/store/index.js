@@ -1,4 +1,10 @@
 import { createStore } from 'vuex'
+import { VuexPersistence } from 'vuex-persist'
+
+// Vuex-persistを使えるようにするための記述
+const vuexPersist = new VuexPersistence({
+  storage: localStorage
+})
 
 export default createStore({
   state: {
@@ -10,6 +16,9 @@ export default createStore({
     },
   },
   mutations: {
+     // Vuex-persistを使えるようにするための記述
+    RESTORE_MUTATION: vuexPersist.RESTORE_MUTATION,
+    
     delete(state, id){
       state.messages = state.messages.filter(message => message.id !== id)
     },
@@ -23,5 +32,7 @@ export default createStore({
   actions: {
   },
   modules: {
-  }
+  },
+  // Vuex-persistを使えるようにするための記述
+  plugins: [vuexPersist.plugin]
 })
