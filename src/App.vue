@@ -7,7 +7,7 @@
         </a>
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
           <li ><router-link class="nav-link px-2 text-secondary" v-if="$store.getters.loggedIn" to="/">MyPortFolio</router-link></li>
-          <li ><router-link class="nav-link px-2 text-secondary" v-if="$store.getters.loggedIn" to="/mypage">MyPage</router-link></li>
+          <li ><router-link class="nav-link px-2 text-secondary" v-if="$store.getters.loggedIn" to="/myPage">MyPage</router-link></li>
           <li ><router-link class="nav-link px-2 text-secondary" v-if="$store.getters.loggedIn" to="/post">Post</router-link></li>
         </ul>
         <div class="text-end">          

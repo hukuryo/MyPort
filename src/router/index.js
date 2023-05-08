@@ -19,8 +19,8 @@ const routes = [
   },
   // プロフィールページ
   {
-    path: '/mypage',
-    name: 'mypage',
+    path: '/myPage',
+    name: 'myPage',
     component: () => import('../views/MyPageView.vue'),
     meta: { requiresAuth: true }
   },
