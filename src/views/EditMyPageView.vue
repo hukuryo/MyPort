@@ -6,11 +6,24 @@
             <div class="d-flex text-muted pt-3">
                 <p class="pb-3 mb-0 small lh-sm border-bottom"><strong class="d-block text-gray-dark">username</strong></p>
             </div>
-            <input type="text" class="form-control" placeholder="username"/>
+            <input type="text" class="form-control" placeholder="username" v-model="username"/>
             <div class="d-flex text-muted pt-3">
                 <p class="pb-3 mb-0 small lh-sm border-bottom"><strong class="d-block text-gray-dark">skill</strong></p>
             </div>
-            <input type="text" class="form-control" placeholder="skill"/>
+            <select class="form-select" aria-label="Default select example" style="width: 30%;" v-model="skill">
+                <option>HTML</option>
+                <option>CSS</option>
+                <option>JavaScript</option>
+                <option>Java</option>
+                <option>Ruby</option>
+            </select><br>
+            <select class="form-select" aria-label="Default select example" style="width: 30%;" v-model="framework">
+                <option>React</option>
+                <option>Vue.js</option>
+                <option>Angular</option>
+                <option>Rails</option>
+                <option>SpringBoot</option>
+            </select>
         </div>
         <div class="my-3 p-3 bg-body rounded shadow-sm">
             <h6 class="border-bottom pb-2 mb-0">MySite</h6>
@@ -19,7 +32,7 @@
                     <div class="d-flex justify-content-between" style="margin-bottom: 5px;">
                         <span class="d-block">GitHub</span>
                     </div>
-                    <input type="text" class="form-control" placeholder="GitHub"/>
+                    <input type="text" class="form-control" placeholder="GitHub" v-model="github"/>
                 </div>
             </div>    
             <div class="d-flex text-muted pt-3">
@@ -27,7 +40,7 @@
                     <div class="d-flex justify-content-between" style="margin-bottom: 5px;">
                         <span class="d-block">Qiita</span>
                     </div>
-                    <input type="text" class="form-control" placeholder="Qiita"/>
+                    <input type="text" class="form-control" placeholder="Qiita" v-model="qiita"/>
                 </div>
             </div>    
             <div class="d-flex text-muted pt-3">
@@ -35,10 +48,47 @@
                     <div class="d-flex justify-content-between" style="margin-bottom: 5px;">
                         <span class="d-block">LAPRAS</span>
                     </div>
-                    <input type="text" class="form-control" placeholder="LAPRAS"/>
+                    <input type="text" class="form-control" placeholder="LAPRAS" v-model="lapras"/>
                 </div>
             </div>    
         </div>
+        <button class="w-100 btn btn-primary btn-lg" type="submit" @click="profileSave">プロフィールを保存</button>
     </form>
 </main>
 </template>
+<script>
+import axios from "axios";
+
+export default {
+    data(){
+        return {
+            username: "",
+            skill: "",
+            framework: "",
+            github: "",
+            qiita: "",
+            lapras: ""
+        }
+    },
+    methods: {
+        profileSave(){
+            const profileData = {
+                username: this.username,
+                skill: this.skill,
+                framework: this.framework,
+                github: this.github,
+                qiita: this.qiita,
+                lapras: this.lapras
+            }
+            axios.post("http://localhost:3000/api/user/profile/save", profileData)
+            .then((response) => {
+                console.log(response.data);
+            })
+            .catch((error) => {
+                return error
+            });
+        this.$router.push("/");
+        }
+    }
+}
+</script>

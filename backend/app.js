@@ -55,7 +55,6 @@ app.post('/api/port/save', (req, res) => {
           }
           // ファイルをJSONパースして配列に変換する
           let arr = JSON.parse(data);
-          console.log(arr)
           // 新しいオブジェクトを作成して配列に追加する
           arr.push({
             id: arrayLength + 1,
@@ -108,45 +107,60 @@ async function initializeUsers(username, pass) {
   }
 }
 
+// プロフィール情報保存
+app.post('/api/user/profile/save', (req, res) => {
+  const data = req.body
+  const arr = {
+    username: data.username,
+    skill: data.skill,
+    framework: data.framework,
+    github: data.github,
+    qiita: data.qiita,
+    lapras: data.lapras
+  }
+  console.log(arr)
+  fs.writeFile('profile.json',arr ,'utf8')
+})
+
 app.post('/api/user/registration', (req, res) => {
   try {
       async function getUserArrayLength() {
-          try {
-              const data = await fs.promises.readFile('users.json', 'utf8');
-              const myData = JSON.parse(data);
-              const arrayLength = myData.length;
-              return arrayLength;
-          } catch (error) {
-              console.error(error);
-              // ファイルが存在しない場合、配列を作成して、入力された内容を保存する。
-              initializeUsers(req.body.username, req.body.pass);
-              return 1;
-          }
+        try {
+          const data = await fs.promises.readFile('users.json', 'utf8');
+          const myData = JSON.parse(data);
+          const arrayLength = myData.length;
+          return arrayLength;
+        } catch (error) {
+          console.error(error);
+          // ファイルが存在しない場合、配列を作成して、入力された内容を保存する。
+          initializeUsers(req.body.username, req.body.pass);
+          return 1;
+        }
       }
       getUserArrayLength().then((usersArrayLength) => {
-          fs.readFile('users.json', 'utf8', (err, data) => {
-              if (err) {
-                  console.error(err);
-                  return;
-              }
-              // ファイルをJSONパースして配列に変換する
-              let arr = JSON.parse(data);
-              // 新しいオブジェクトを作成して配列に追加する
-              arr.push({
-                  id: usersArrayLength + 1,
-                  username: req.body.username,
-                  pass: req.body.pass
-              });
-              // 配列をJSON文字列に変換する
-              let newData = JSON.stringify(arr, null, '\t');
-              // ファイルに書き込む
-              fs.writeFile('users.json', newData, 'utf8', (err) => {
-                  if (err) {
-                      console.error(err);
-                      return;
-                  }
-              });
+        fs.readFile('users.json', 'utf8', (err, data) => {
+          if (err) {
+            console.error(err);
+            return;
+          }
+          // ファイルをJSONパースして配列に変換する
+          let arr = JSON.parse(data);
+          // 新しいオブジェクトを作成して配列に追加する
+          arr.push({
+            id: usersArrayLength + 1,
+            username: req.body.username,
+            pass: req.body.pass
           });
+          // 配列をJSON文字列に変換する
+          let newData = JSON.stringify(arr, null, '\t');
+          // ファイルに書き込む
+          fs.writeFile('users.json', newData, 'utf8', (err) => {
+            if (err) {
+                console.error(err);
+                return;
+            }
+          });
+        });
       });
   } catch (e) {
       console.log(e);
