@@ -18,5 +18,20 @@
 		"id": 4,
 		"username": "yama",
 		"pass": "debu"
+	},
+	{
+		"id": 5,
+		"username": "huku",
+		"pass": "pass"
+	},
+	{
+		"id": 6,
+		"username": "ken",
+		"pass": "ken",
+		"skill": "JavaScript",
+		"framework": "Angular",
+		"github": "iii@iii",
+		"qiita": "ppp@ppp",
+		"lapras": "lll@lll"
 	}
 ]

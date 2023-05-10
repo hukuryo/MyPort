@@ -143,13 +143,19 @@ app.post('/api/user/registration', (req, res) => {
             console.error(err);
             return;
           }
+          const date = req.body
           // ファイルをJSONパースして配列に変換する
           let arr = JSON.parse(data);
           // 新しいオブジェクトを作成して配列に追加する
           arr.push({
             id: usersArrayLength + 1,
-            username: req.body.username,
-            pass: req.body.pass
+            username: date.username,
+            pass: date.pass,
+            skill: date.skill,
+            framework: date.framework,
+            github: date.github,
+            qiita: date.qiita,
+            lapras: date.lapras
           });
           // 配列をJSON文字列に変換する
           let newData = JSON.stringify(arr, null, '\t');
