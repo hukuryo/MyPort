@@ -11,7 +11,6 @@
                   <router-link :to= "{name: 'postDetail', params: {id: item.id}}" class="btn btn-sm btn-outline-secondary" >View</router-link>
                   <router-link :to= "{name: 'postEdit', params: {id: item.id}}" class="btn btn-sm btn-outline-secondary" >Edit</router-link>
                 </div>
-                <small class="text-muted">作成日</small>
               </div>
             </div>
           </div>
@@ -23,6 +22,8 @@
 
 <script>
 import axios from "axios";
+// const postUserName = JSON.parse(localStorage.getItem("vuex"))
+
 export default {
   name: 'PortView',
   data(){
@@ -31,10 +32,10 @@ export default {
     }
   },
   created(){
-    this.getMessages()
+    this.getPortFolio()
   },
   methods: {
-    getMessages() {  
+    getPortFolio() {  
       axios.get("http://localhost:3000/api/port/get")
         .then(response => {
           this.portsData = response.data

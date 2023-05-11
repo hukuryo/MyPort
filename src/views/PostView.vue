@@ -27,7 +27,7 @@
                 </div>
                 </div>
                 <hr class="my-4" />
-                <button class="w-100 btn btn-primary btn-lg" type="submit" @click="save">ポートフォリをクリップ</button>
+                <button class="w-100 btn btn-primary btn-lg" type="submit" @click="save">ポートフォリオをクリップ</button>
             </form>
         </div>
     </main>
@@ -37,32 +37,33 @@
 import axios from "axios";
 
 export default {
-name: "PortView",
-data() {
-    return {
-        PortName: "",
-        PortUrl: '',
-        PortContent: '',
-    };
-},
-methods: {
-    save() {
-        let portsContent = {
-            id: Math.floor(Math.random() * 1000), // ランダムなIDを生成
-            PortName: this.PortName,
-            PortUrl: this.PortUrl,
-            PortContent: this.PortContent,
+    name: "PortView",
+    data() {
+        return {
+            PortName: "",
+            PortUrl: '',
+            PortContent: '',
         };
-        axios.post("http://localhost:3000/api/port/save", portsContent)
-            .then((response) => {
-                console.log(response.data);
-            })
-            .catch((error) => {
-                return error
-            });
-        this.$router.push("/");
     },
-},
+    methods: {
+        save() {
+            let portsContent = {
+                id: Math.floor(Math.random() * 1000), // ランダムなIDを生成
+                PortName: this.PortName,
+                PortUrl: this.PortUrl,
+                PortContent: this.PortContent,
+            };
+            axios.post("http://localhost:3000/api/port/save", portsContent)
+                .then((response) => {
+                    console.log(portsContent);
+                    console.log(response);
+                })
+                .catch((error) => {
+                    return error
+                });
+            this.$router.push("/");
+        },
+    },
 };
 </script>
 <style scoped>

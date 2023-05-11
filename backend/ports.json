@@ -1,32 +1,8 @@
 [
 	{
 		"id": 1,
-		"PortName": "aaa",
-		"PortUrl": "sss",
-		"PortContent": "ddd"
-	},
-	{
-		"id": 2,
-		"PortName": "fff",
-		"PortUrl": "dddd",
-		"PortContent": "ffff"
-	},
-	{
-		"id": 3,
-		"PortName": "fff",
-		"PortUrl": "dddd",
-		"PortContent": "ffff"
-	},
-	{
-		"id": 4,
-		"PortName": "sample",
-		"PortUrl": "ooo@ooo",
-		"PortContent": "good sample"
-	},
-	{
-		"id": 5,
-		"PortName": "pass",
-		"PortUrl": "asdfd",
-		"PortContent": "gasgdg"
+		"PortName": "MemoForm",
+		"PortUrl": "memo.com",
+		"PortContent": "メモ管理アプリ"
 	}
 ]

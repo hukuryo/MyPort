@@ -42,6 +42,20 @@ app.get('/api/port/get', (req, res) => {
   }
 });
 
+app.get('/api/port/detail/get', (req, res) => {
+  try {
+    //データを取りだす
+    const bufferData = fs.readFileSync('users.json')
+    // データを文字列に変換
+    const dataJSON = bufferData.toString()
+    //JSONのデータをJavascriptのオブジェクトに
+    const data = JSON.parse(dataJSON)
+    res.send(data)
+  } catch(e) {
+    console.log("JSONデータなし")
+  }
+});
+
 
 // POSTメソッドでフォームの値を受け取る
 app.post('/api/port/save', (req, res) => {
@@ -49,6 +63,10 @@ app.post('/api/port/save', (req, res) => {
     getArrayLength()
       .then((arrayLength) => {
         fs.readFile('ports.json', 'utf8', (err, data) => {
+          // const bufferData = fs.readFileSync('users.json')
+          // const dataJSON = bufferData.toString()
+          // const userId = JSON.parse(dataJSON)
+          // console.log(userId)
           if (err) {
             console.error(err);
             return;
@@ -58,6 +76,7 @@ app.post('/api/port/save', (req, res) => {
           // 新しいオブジェクトを作成して配列に追加する
           arr.push({
             id: arrayLength + 1,
+            ClipUserName: req.body.ClipUserName,
             PortName: req.body.PortName,
             PortUrl: req.body.PortUrl,
             PortContent: req.body.PortContent,

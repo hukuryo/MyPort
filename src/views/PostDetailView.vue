@@ -47,7 +47,6 @@ export default {
             const id = parseInt(this.$route.params.id);
             axios.get("http://localhost:3000/api/port/get")
                 .then(response => {
-                    console.log(response.data.length)
                     for(let port_i = 0; port_i <= response.data.length; port_i++){
                         if(id === response.data[port_i].id){
                             this.PortName = response.data[port_i].PortName;
