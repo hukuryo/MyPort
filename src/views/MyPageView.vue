@@ -8,10 +8,7 @@
         <div class="d-flex text-muted pt-3">
             <p class="pb-3 mb-0 small lh-sm border-bottom"><strong class="d-block text-gray-dark">skill</strong></p>
         </div>
-        <div class="d-flex text-muted pt-3">
-        </div>
-        <small class="d-block text-end mt-3">
-        </small>
+        <p style="text-align: left;">{{ this.skill }}</p>
     </div>
 
     <div class="my-3 p-3 bg-body rounded shadow-sm">
@@ -21,6 +18,7 @@
                 <div class="d-flex justify-content-between">
                 </div>
                 <span class="d-block">GitHub</span>
+                <p style="text-align: left;">{{ this.github }}</p>
             </div>
         </div>    
         <div class="d-flex text-muted pt-3">
@@ -28,13 +26,15 @@
                 <div class="d-flex justify-content-between">
                 </div>
                 <span class="d-block">Qiita</span>
+                <p style="text-align: left;">{{ this.qiita }}</p>
             </div>
         </div>    
         <div class="d-flex text-muted pt-3">
             <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
                 <div class="d-flex justify-content-between">
                 </div>
-                <span class="d-block">LAPRAS</span>
+                <span class="d-block" style="text-align: left;">LAPRAS</span>
+                <p style="text-align: left;">{{ this.lapras }}</p>
             </div>
         </div>    
     </div>
@@ -65,7 +65,7 @@ export default {
                 .then(response => {
                     for(let i = 0; i <= response.data.length; i++){
                         const name = response.data[i].username;
-                        if(postUserName.username === name){
+                        if(postUserName.username == name){
                             const responseData = response.data[i]
                             this.username = responseData.username
                             this.skill = responseData.skill
