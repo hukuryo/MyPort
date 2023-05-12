@@ -63,10 +63,6 @@ app.post('/api/port/save', (req, res) => {
     getArrayLength()
       .then((arrayLength) => {
         fs.readFile('ports.json', 'utf8', (err, data) => {
-          // const bufferData = fs.readFileSync('users.json')
-          // const dataJSON = bufferData.toString()
-          // const userId = JSON.parse(dataJSON)
-          // console.log(userId)
           if (err) {
             console.error(err);
             return;

@@ -22,7 +22,6 @@
 
 <script>
 import axios from "axios";
-// const postUserName = JSON.parse(localStorage.getItem("vuex"))
 
 export default {
   name: 'PortView',
