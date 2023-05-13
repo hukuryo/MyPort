@@ -30,6 +30,7 @@ methods: {
                 console.log(response)
                 if(response.status === 200){
                     this.$store.commit('setUsername', userContent.username);
+                    // this.$store.commit('setUserId', userContent.username);
                     this.$router.push('/');
                 }
             })

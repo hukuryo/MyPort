@@ -81,13 +81,13 @@ export default {
                 lapras: this.lapras
             }
             axios.post("http://localhost:3000/api/user/profile/save", profileData)
-            .then((response) => {
-                console.log(response.data);
-            })
-            .catch((error) => {
-                return error
-            });
-        this.$router.push("/");
+                .then((response) => {
+                    console.log(response.data);
+                })
+                .catch((error) => {
+                    return error
+                });
+            this.$router.push("/");
         }
     }
 }

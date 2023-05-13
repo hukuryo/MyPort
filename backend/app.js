@@ -85,7 +85,7 @@ app.post('/api/port/save', (req, res) => {
               console.error(err);
               return;
             }
-            console.log('JSONデータを追加！');
+          console.log('JSONデータを追加！');
           });
         });
       })
@@ -124,6 +124,15 @@ async function initializeUsers(username, pass) {
 
 // プロフィール情報保存
 app.post('/api/user/profile/save', (req, res) => {
+  const bufferData = fs.readFileSync('users.json');
+  let data = JSON.parse(bufferData);
+  const reqData = req.body
+  
+  fs.writeFile('profile.json',arr ,'utf8')
+})
+
+// プロフィール編集
+app.put('/api/user/portfolio/edit', (req, res) => {
   const data = req.body
   const arr = {
     username: data.username,
@@ -133,8 +142,6 @@ app.post('/api/user/profile/save', (req, res) => {
     qiita: data.qiita,
     lapras: data.lapras
   }
-  console.log(arr)
-  fs.writeFile('profile.json',arr ,'utf8')
 })
 
 app.post('/api/user/registration', (req, res) => {
@@ -198,7 +205,8 @@ app.post('/api/user/login', (req, res) => {
     //ユーザーを一人ずつ取り出して、入力された内容と比較する。   
     for (let i = 0; i < data.length; i++) {
       if (data[i].username === getData.username && data[i].pass === getData.pass) {
-      // フロント側に成功メッセージを送る
+        // res.send(data[i])
+        // フロント側に成功メッセージを送る
         return res.status(200).send('Success');
       }
     }

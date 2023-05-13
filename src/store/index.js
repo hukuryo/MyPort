@@ -25,6 +25,9 @@ export default createStore({
     setUsername(state, username) {
       state.username = username
     },
+    setUserId(state, id){
+      state.id = id
+    },
     setPass(state, pass) {
       state.pass = pass
     }
