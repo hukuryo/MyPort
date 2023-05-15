@@ -25,6 +25,7 @@ export default {
     logout () {
         const confirm = window.confirm("ログアウトしてもよろしいですか？")
         if(confirm){
+          this.$store.commit('setUserId', null)
           this.$store.commit('setUsername', null)
           // ログアウト時に画面のキャッシュを消すため、リロードする。
           location.reload()

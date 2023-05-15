@@ -201,13 +201,12 @@ app.post('/api/user/login', (req, res) => {
     const userData = fs.readFileSync('users.json');
     const userDataJSON = userData.toString();
     const getData = req.body;
-    const data = JSON.parse(userDataJSON);
+    const showData = JSON.parse(userDataJSON);
     //ユーザーを一人ずつ取り出して、入力された内容と比較する。   
-    for (let i = 0; i < data.length; i++) {
-      if (data[i].username === getData.username && data[i].pass === getData.pass) {
-        // res.send(data[i])
+    for (let i = 0; i < showData.length; i++) {
+      if (showData[i].username === getData.username && showData[i].pass === getData.pass) {
         // フロント側に成功メッセージを送る
-        return res.status(200).send('Success');
+        return res.status(200).send(showData[i]);
       }
     }
   //入力された内容と一致するユーザーがいなければ、失敗メッセージを返す。   

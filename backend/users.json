@@ -8,5 +8,15 @@
 		"github": "iii@iii",
 		"qiita": "ppp@ppp",
 		"lapras": "lll@lll"
+	},
+	{
+		"id": 2,
+		"username": "fuku",
+		"pass": "pass",
+		"skill": "JavaScript",
+		"framework": "Vue.js",
+		"github": "ppo@hhh",
+		"qiita": "uuu@ggg",
+		"lapras": "ooo@bbb"
 	}
 ]

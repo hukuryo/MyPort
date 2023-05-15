@@ -12,7 +12,7 @@ export default createStore({
   },
   getters: {
     loggedIn: (state) => {
-      return Boolean(state.username)
+      return Boolean(state.id)
     },
   },
   mutations: {

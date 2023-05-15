@@ -27,10 +27,10 @@ methods: {
             // Node.jsで認証を行うために、APIリクエストと一緒に、入力された内容をNode.jsに投げる
             axios.post("http://localhost:3000/api/user/login", userContent)
             .then(response => {
-                console.log(response)
+                const setId = response.data.id
                 if(response.status === 200){
                     this.$store.commit('setUsername', userContent.username);
-                    // this.$store.commit('setUserId', userContent.username);
+                    this.$store.commit('setUserId', setId);
                     this.$router.push('/');
                 }
             })
