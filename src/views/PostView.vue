@@ -35,6 +35,7 @@
 </template>
 <script>
 import axios from "axios";
+const postUserId = JSON.parse(localStorage.getItem("vuex"))
 
 export default {
     name: "PortView",
@@ -49,13 +50,13 @@ export default {
         save() {
             let portsContent = {
                 id: Math.floor(Math.random() * 1000), // ランダムなIDを生成
+                postUserId: postUserId,
                 PortName: this.PortName,
                 PortUrl: this.PortUrl,
                 PortContent: this.PortContent,
             };
             axios.post("http://localhost:3000/api/port/save", portsContent)
                 .then((response) => {
-                    console.log(portsContent);
                     console.log(response);
                 })
                 .catch((error) => {
@@ -68,6 +69,6 @@ export default {
 </script>
 <style scoped>
 .form-body {
-text-align: initial;
+    text-align: initial;
 }
 </style>

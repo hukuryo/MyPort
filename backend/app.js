@@ -67,15 +67,17 @@ app.post('/api/port/save', (req, res) => {
             console.error(err);
             return;
           }
+          const requestBodyData = req.body
           // ファイルをJSONパースして配列に変換する
           let arr = JSON.parse(data);
           // 新しいオブジェクトを作成して配列に追加する
           arr.push({
             id: arrayLength + 1,
-            ClipUserName: req.body.ClipUserName,
-            PortName: req.body.PortName,
-            PortUrl: req.body.PortUrl,
-            PortContent: req.body.PortContent,
+            postUserId: requestBodyData.postUserId.id,
+            ClipUserName: requestBodyData.ClipUserName,
+            PortName: requestBodyData.PortName,
+            PortUrl: requestBodyData.PortUrl,
+            PortContent: requestBodyData.PortContent,
           });
           // 配列をJSON文字列に変換する
           let newData = JSON.stringify(arr, null, '\t');

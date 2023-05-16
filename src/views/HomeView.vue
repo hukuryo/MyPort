@@ -22,6 +22,7 @@
 
 <script>
 import axios from "axios";
+const postUserLocalId = JSON.parse(localStorage.getItem("vuex"))
 
 export default {
   name: 'PortView',
@@ -37,7 +38,12 @@ export default {
     getPortFolio() {  
       axios.get("http://localhost:3000/api/port/get")
         .then(response => {
-          this.portsData = response.data
+          console.log(response.data[0].postUserId)
+          for(let i = 0; i <= response.data.length; i++){
+            if(postUserLocalId.id === response.data[i].postUserId){
+              this.portsData = response.data
+            }
+          }
         })
         .catch(error => {
           console.log(error)
