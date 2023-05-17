@@ -10,6 +10,10 @@
             <h5 class="pb-3 mb-0">スキル</h5>
         </div>
         <p style="text-align: left;">{{ this.skill }}</p>
+        <div class="d-flex text-muted pt-3">
+            <h5 class="pb-3 mb-0">フレームワーク</h5>
+        </div>
+        <p style="text-align: left;">{{ this.framework }}</p>
     </div>
 
     <div class="my-3 p-3 bg-body rounded shadow-sm">
@@ -53,6 +57,7 @@ export default {
         return{
             username: postUserName.username,
             skill: "",
+            framework: "",
             github: "",
             qiita: "",
             lapras: ""
@@ -70,6 +75,7 @@ export default {
                         if(postUserName.username == name){
                             const responseData = response.data[i]
                             this.skill = responseData.skill
+                            this.framework = responseData.framework
                             this.github = responseData.github
                             this.qiita = responseData.qiita
                             this.lapras = responseData.lapras

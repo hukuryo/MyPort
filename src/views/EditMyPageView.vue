@@ -58,11 +58,12 @@
 </template>
 <script>
 import axios from "axios";
+const postUserName = JSON.parse(localStorage.getItem("vuex"))
 
 export default {
     data(){
-        return {
-            username: "",
+        return{
+            username: postUserName.username,
             skill: "",
             framework: "",
             github: "",
@@ -70,25 +71,29 @@ export default {
             lapras: ""
         }
     },
+    created(){
+        this.getPortFolio()
+    },
     methods: {
-        profileSave(){
-            const profileData = {
-                username: this.username,
-                skill: this.skill,
-                framework: this.framework,
-                github: this.github,
-                qiita: this.qiita,
-                lapras: this.lapras
-            }
-            axios.post("http://localhost:3000/api/user/profile/save", profileData)
-                .then((response) => {
-                    console.log(response.data);
+        getPortFolio() {  
+            axios.get("http://localhost:3000/api/port/detail/get")
+                .then(response => {
+                    for(let i = 0; i <= response.data.length; i++){
+                        const name = response.data[i].username;
+                        if(postUserName.username == name){
+                            const responseData = response.data[i]
+                            this.skill = responseData.skill
+                            this.framework = responseData.framework
+                            this.github = responseData.github
+                            this.qiita = responseData.qiita
+                            this.lapras = responseData.lapras
+                        }
+                    }
                 })
-                .catch((error) => {
-                    return error
-                });
-            this.$router.push("/");
-        }
+                .catch(error => {
+                    console.log(error)
+                })
+        },
     }
 }
 </script>
