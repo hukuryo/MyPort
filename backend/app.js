@@ -97,7 +97,7 @@ app.post('/api/port/save', (req, res) => {
 });
 
 
-// メッセージ編集
+// ポートフォリオ編集
 app.put('/api/port/edit', (req, res) => {
   try{
       const bufferData = fs.readFileSync('ports.json');
@@ -106,7 +106,7 @@ app.put('/api/port/edit', (req, res) => {
       editData.PortName = req.body.PortName;
       editData.PortUrl = req.body.PortUrl;
       editData.PortContent = req.body.PortContent;
-      const updatedJsonData = JSON.stringify(data);
+      const updatedJsonData = JSON.stringify(data, null, '\t');
       fs.writeFileSync('ports.json', updatedJsonData);
   }catch(e){
       console.log(e);
@@ -127,23 +127,25 @@ async function initializeUsers(username, pass) {
 // プロフィール情報保存
 app.post('/api/user/profile/save', (req, res) => {
   const bufferData = fs.readFileSync('users.json');
-  let data = JSON.parse(bufferData);
+  let data = JSON.parse(bufferData, null, '\t');
   const reqData = req.body
-  
   fs.writeFile('profile.json',arr ,'utf8')
 })
 
 // プロフィール編集
 app.put('/api/user/portfolio/edit', (req, res) => {
+  const bufferData = fs.readFileSync('ports.json');
+  let jsonData = JSON.parse(bufferData);
   const data = req.body
-  const arr = {
-    username: data.username,
-    skill: data.skill,
-    framework: data.framework,
-    github: data.github,
-    qiita: data.qiita,
-    lapras: data.lapras
-  }
+  const editData = data.id - 1
+  jsonData[editData].username = data.username
+  jsonData[editData].skill = data.skill
+  jsonData[editData].framework = data.framework
+  jsonData[editData].github = data.github
+  jsonData[editData].qiita = data.qiita
+  jsonData[editData].lapras = data.lapras
+  const updatedJsonData = JSON.stringify(jsonData, null, '\t');
+  fs.writeFileSync('profile.json', updatedJsonData);
 })
 
 app.post('/api/user/registration', (req, res) => {
@@ -169,7 +171,7 @@ app.post('/api/user/registration', (req, res) => {
           }
           const date = req.body
           // ファイルをJSONパースして配列に変換する
-          let arr = JSON.parse(data);
+          let arr = JSON.parse(data, null, '\t');
           // 新しいオブジェクトを作成して配列に追加する
           arr.push({
             id: usersArrayLength + 1,
@@ -221,4 +223,4 @@ app.post('/api/user/login', (req, res) => {
 
 
 // 3000番ポートでサーバーを起動できるようにする。
-app.listen(3000, () => console.log('Server running on port 3000'));
+app.listen(3000, () => console.log('3000番ポートで起動'));

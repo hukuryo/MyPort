@@ -1,9 +1,1 @@
-[
-	{
-		"id": 1,
-		"postUserId": 2,
-		"PortName": "sample",
-		"PortUrl": "ffff@ffss",
-		"PortContent": "sample"
-	}
-]
+[{"id":1,"postUserId":2,"PortName":"sample","PortUrl":"ffff@ffss","PortContent":"sample"},{"id":2,"postUserId":1,"PortName":"天気","PortUrl":"ppp@ppp","PortContent":"最高"}]

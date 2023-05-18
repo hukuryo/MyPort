@@ -94,6 +94,24 @@ export default {
                     console.log(error)
                 })
         },
+        editPortFolio(){
+            const postUserId = JSON.parse(localStorage.getItem("vuex"))
+            const id = postUserId.id
+            let portsContent = {
+                id: id,
+                PortName: this.PortName,
+                PortUrl: this.PortUrl,
+                PortContent: this.PortContent,
+            };
+            axios.put('http://localhost:3000/api/port/edit', portsContent)
+                .then((response) => {
+                        console.log(response);
+                        this.$router.push('/');
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                });
+        }
     }
 }
 </script>
