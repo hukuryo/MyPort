@@ -38,10 +38,10 @@ export default {
     getPortFolio() {  
       axios.get("http://localhost:3000/api/port/get")
         .then(response => {
-          console.log(response.data[0].postUserId)
-          for(let i = 0; i <= response.data.length; i++){
-            if(postUserLocalId.id === response.data[i].postUserId){
+          for(let i = 0; i <= response.data.length - 1; i++){
+            if(postUserLocalId.id == response.data[i].postUserId){
               this.portsData = response.data
+              console.log(this.portsData)
             }
           }
         })

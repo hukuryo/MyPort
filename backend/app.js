@@ -87,7 +87,6 @@ app.post('/api/port/save', (req, res) => {
               console.error(err);
               return;
             }
-          console.log('JSONデータを追加！');
           });
         });
       })
@@ -103,6 +102,7 @@ app.put('/api/port/edit', (req, res) => {
       const bufferData = fs.readFileSync('ports.json');
       let data = JSON.parse(bufferData);
       const editData = data[req.body.id - 1]
+      editData.postUserId = editData.postUserId
       editData.PortName = req.body.PortName;
       editData.PortUrl = req.body.PortUrl;
       editData.PortContent = req.body.PortContent;

@@ -63,6 +63,7 @@ export default {
                     return error
                 });
             this.$router.push("/");
+            location.reload(true)
         },
     },
 };
