@@ -32,7 +32,6 @@ export default {
           if (this.$route.meta.requiresAuth) {
             this.$router.push({
               path: '/login',
-              query: { redirect: this.$route.fullPath }
             })
           }
         }else{

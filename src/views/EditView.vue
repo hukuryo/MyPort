@@ -76,9 +76,9 @@ export default {
             axios.put('http://localhost:3000/api/port/edit', portsContent)
             .then((response) => {
                     console.log(response.data);
-                })
-                .catch((error) => {
-                    console.error(error);
+            })
+            .catch((error) => {
+                console.error(error);
             });
             this.$router.push('/');
         }
