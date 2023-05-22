@@ -16,6 +16,9 @@
                 <option>JavaScript</option>
                 <option>Java</option>
                 <option>Ruby</option>
+                <option>Go</option>
+                <option>Rust</option>
+                <option>C##</option>
             </select><br>
             <select class="form-select" aria-label="Default select example" style="width: 30%;" v-model="framework">
                 <option>React</option>
@@ -23,6 +26,8 @@
                 <option>Angular</option>
                 <option>Rails</option>
                 <option>SpringBoot</option>
+                <option>JSF</option>
+                <option>.NET</option>
             </select>
         </div>
         <div class="my-3 p-3 bg-body rounded shadow-sm">

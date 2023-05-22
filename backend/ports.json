@@ -9,14 +9,14 @@
 	{
 		"id": 2,
 		"postUserId": 1,
-		"PortName": "天気っっs",
+		"PortName": "天気",
 		"PortUrl": "ppp@ppp",
 		"PortContent": "最高"
 	},
 	{
 		"id": 3,
 		"postUserId": 1,
-		"PortName": "dさfさd",
+		"PortName": "sample",
 		"PortUrl": "ファさd",
 		"PortContent": "f"
 	}
