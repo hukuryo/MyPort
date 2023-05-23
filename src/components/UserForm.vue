@@ -14,6 +14,7 @@
         <button class="w-100 btn btn-lg btn-primary" type="submit" @click="actionChangeButton">{{ buttonText }}</button>
     </form>
 </template>
+
 <script>
 export default {
     name: 'AuthenticationForm',

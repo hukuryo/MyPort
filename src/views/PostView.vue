@@ -33,6 +33,7 @@
     </main>
 </div>
 </template>
+
 <script>
 import axios from "axios";
 const postUserId = JSON.parse(localStorage.getItem("vuex"))
@@ -68,6 +69,7 @@ export default {
     },
 };
 </script>
+
 <style scoped>
 .form-body {
     text-align: initial;
