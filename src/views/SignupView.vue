@@ -10,7 +10,7 @@
             <input id="password" class="form-control" type="password" placeholder="Password" v-model="pass">
             <label for="floatingPassword">パスワード</label>
         </div>
-        <div class="my-3 p-3 bg-body rounded">
+        <div class="my-3 bg-body rounded">
             <div class="d-flex text-muted">
                 <p class="mb-0 small lh-sm border-bottom"><strong class="d-block text-gray-dark">skill</strong></p>
             </div>
@@ -34,7 +34,7 @@
                 <option>.NET</option>
             </select>
         </div>
-        <div class="my-3 p-3 bg-body rounded shadow-sm">
+        <div class="my-3 bg-body rounded shadow-sm">
             <div class="d-flex text-muted pt-3">
                 <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
                     <div class="d-flex justify-content-between" style="margin-bottom: 5px;">

@@ -33,26 +33,26 @@ app.get('/api/port/get', (req, res) => {
     //データを取りだす
     const bufferData = fs.readFileSync('ports.json')
     // データを文字列に変換
-    const dataJSON = bufferData.toString()
+    const dataJSON = bufferData.toString();
     //JSONのデータをJavascriptのオブジェクトに
-    const data = JSON.parse(dataJSON)
-    res.send(data)
+    const data = JSON.parse(dataJSON);
+    res.send(data);
   } catch(e) {
-    console.log("JSONデータなし")
+    console.log("JSONデータなし");
   }
 });
 
 app.get('/api/port/detail/get', (req, res) => {
   try {
     //データを取りだす
-    const bufferData = fs.readFileSync('users.json')
+    const bufferData = fs.readFileSync('users.json');
     // データを文字列に変換
-    const dataJSON = bufferData.toString()
+    const dataJSON = bufferData.toString();
     //JSONのデータをJavascriptのオブジェクトに
-    const data = JSON.parse(dataJSON)
-    res.send(data)
+    const data = JSON.parse(dataJSON);
+    res.send(data);
   } catch(e) {
-    console.log("JSONデータなし")
+    console.log("JSONデータなし");
   }
 });
 
@@ -67,7 +67,7 @@ app.post('/api/port/save', (req, res) => {
             console.error(err);
             return;
           }
-          const requestBodyData = req.body
+          const requestBodyData = req.body;
           // ファイルをJSONパースして配列に変換する
           let arr = JSON.parse(data);
           // 新しいオブジェクトを作成して配列に追加する
@@ -101,8 +101,8 @@ app.put('/api/port/edit', (req, res) => {
   try{
       const bufferData = fs.readFileSync('ports.json');
       let data = JSON.parse(bufferData);
-      const editData = data[req.body.id - 1]
-      editData.postUserId = editData.postUserId
+      const editData = data[req.body.id - 1];
+      editData.postUserId = editData.postUserId;
       editData.PortName = req.body.PortName;
       editData.PortUrl = req.body.PortUrl;
       editData.PortContent = req.body.PortContent;
@@ -128,22 +128,22 @@ async function initializeUsers(username, pass) {
 app.post('/api/user/profile/save', (req, res) => {
   const bufferData = fs.readFileSync('users.json');
   let data = JSON.parse(bufferData, null, '\t');
-  const reqData = req.body
-  fs.writeFile('profile.json',arr ,'utf8')
+  const reqData = req.body;
+  fs.writeFile('profile.json',arr ,'utf8');
 })
 
 // プロフィール編集
 app.put('/api/user/portfolio/edit', (req, res) => {
   const bufferData = fs.readFileSync('ports.json');
   let jsonData = JSON.parse(bufferData);
-  const data = req.body
+  const data = req.body;
   const editData = data.id - 1
-  jsonData[editData].username = data.username
-  jsonData[editData].skill = data.skill
-  jsonData[editData].framework = data.framework
-  jsonData[editData].github = data.github
-  jsonData[editData].qiita = data.qiita
-  jsonData[editData].lapras = data.lapras
+  jsonData[editData].username = data.username;
+  jsonData[editData].skill = data.skill;
+  jsonData[editData].framework = data.framework;
+  jsonData[editData].github = data.github;
+  jsonData[editData].qiita = data.qiita;
+  jsonData[editData].lapras = data.lapras;
   const updatedJsonData = JSON.stringify(jsonData, null, '\t');
   fs.writeFileSync('profile.json', updatedJsonData);
 })
