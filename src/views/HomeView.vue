@@ -5,11 +5,11 @@
         <div class="col" v-for="item in userPortsData" :key="item.id">
           <div class="card shadow-sm">
             <div class="card-body">
-              <p class="card-text">{{ item.PortName }}</p>
+              <p class="card-text"><i class="fa-solid fa-book" style="margin-right: 5px;"></i>{{ item.PortName }}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <router-link :to="{ name: 'postDetail', params: { id: item.id }}" class="btn btn-sm btn-outline-secondary">View</router-link>
-                  <router-link :to="{ name: 'postEdit', params: { id: item.id }}" class="btn btn-sm btn-outline-secondary">Edit</router-link>
+                  <router-link :to="{ name: 'postDetail', params: { id: item.id }}" class="btn btn-sm btn-outline-secondary"><i class="fa-sharp fa-regular fa-file" style="margin-right: 2px;"></i>View</router-link>
+                  <router-link :to="{ name: 'postEdit', params: { id: item.id }}" class="btn btn-sm btn-outline-secondary"><i class="fa-sharp fa-solid fa-file-pen" style="margin-right: 2px;"></i>Edit</router-link>
                 </div>
               </div>
             </div>
