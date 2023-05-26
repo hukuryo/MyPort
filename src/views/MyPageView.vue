@@ -3,15 +3,15 @@
     <div class="my-3 p-3 bg-body rounded shadow-sm">
         <h6 class="border-bottom pb-2 mb-0">Profile</h6>
         <div class="d-flex text-muted pt-3">
-            <h5 class="pb-3 mb-0">ユーザー名</h5>
+            <h5 class="pb-3 mb-0"><i class="fa-solid fa-user" style="margin-right: 3px;"></i>ユーザー名</h5>
         </div>
         <p style="text-align: left;">{{ this.username }}</p>
         <div class="d-flex text-muted pt-3">
-            <h5 class="pb-3 mb-0">スキル</h5>
+            <h5 class="pb-3 mb-0"><i class="fa-solid fa-pen" style="margin-right: 3px;"></i>スキル</h5>
         </div>
         <p style="text-align: left;">{{ this.skill }}</p>
         <div class="d-flex text-muted pt-3">
-            <h5 class="pb-3 mb-0">フレームワーク</h5>
+            <h5 class="pb-3 mb-0"><i class="fa-solid fa-frame" style="margin-right: 3px;"></i>フレームワーク</h5>
         </div>
         <p style="text-align: left;">{{ this.framework }}</p>
     </div>
