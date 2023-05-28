@@ -3,7 +3,6 @@
 <main>
     <div class="py-5 text-center">    
         <h2>ポートフォリオ編集</h2>
-        <p class="lead">作成したポートフォリオを編集</p>
     </div>
     <div class="form-body">
         <div class="">
@@ -25,7 +24,8 @@
                     </div>
                 </div>
                 <hr class="my-4">
-                <button class="w-100 btn btn-primary btn-lg" type="submit" @click="portEdit">編集</button>
+                <button class="w-50 btn btn-primary btn-lg" type="submit" @click="portEdit">編集</button>
+                <button class="w-50 btn btn-danger btn-lg" type="submit" @click="portDelete">削除</button>
             </form>
         </div>
     </div>
@@ -80,6 +80,17 @@ export default {
             .catch((error) => {
                 console.error(error);
             });
+            this.$router.push('/');
+        },
+        portDelete(){
+            const id = parseInt(this.$route.params.id);
+            axios.delete('http://localhost:3000/api/port/delete', id)
+                .then((response) => {
+                    console.log(response);
+                })
+                .catch((error) => {
+                    console.log(error);
+                })
             this.$router.push('/');
         }
     }

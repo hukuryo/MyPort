@@ -113,6 +113,15 @@ app.put('/api/port/edit', (req, res) => {
   }
 });
 
+// ポートフォリオ削除
+app.delete('/api/port/delete', (req, res) => {
+  const bufferData = fs.readFileSync('ports.json');
+  const portData = JSON.parse(bufferData);
+  const deleteIndex = portData.findIndex(port => port.id === req.body.id);
+  portData.splice(deleteIndex, 1);
+  fs.writeFileSync('ports.json', JSON.stringify(bufferData));
+})
+
 
 // ユーザー認証API
 async function initializeUsers(username, pass) {
