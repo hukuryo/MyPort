@@ -1,7 +1,7 @@
 <template>
 <main class="container">
     <div class="my-3 p-3 bg-body rounded shadow-sm">
-        <h6 class="border-bottom pb-2 mb-0"><i class="fa-solid fa-address-card"></i>Profile</h6>
+        <h6 class="border-bottom pb-2 mb-0"><i class="fa-solid fa-address-card"></i>プロフィール</h6>
         <div class="d-flex text-muted pt-3">
             <h5 class="pb-3 mb-0"><i class="fa-solid fa-face-smile"></i>ユーザー名</h5>
         </div>
@@ -17,7 +17,7 @@
     </div>
 
     <div class="my-3 p-3 bg-body rounded shadow-sm">
-        <h6 class="border-bottom pb-2 mb-0"><i class="fa-solid fa-sitemap"></i>MySite</h6>
+        <h6 class="border-bottom pb-2 mb-0"><i class="fa-solid fa-sitemap"></i>自分のサイト</h6>
         <div class="d-flex text-muted pt-3">
             <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
                 <div class="d-flex justify-content-between">
@@ -42,6 +42,14 @@
                 <p style="text-align: left;">{{ this.lapras }}</p>
             </div>
         </div>    
+        <div class="d-flex text-muted pt-3">
+            <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+                <div class="d-flex justify-content-between">
+                    <h5 class="d-block" style="text-align: left;"><i class="fa-brands fa-twitter" style="margin-right: 3px;"></i>twitter</h5>
+                </div>
+                <p style="text-align: left;">{{ this.twitter }}</p>
+            </div>
+        </div>    
     </div>
     <router-link class="btn btn-success" to="/editMyPage"><i class="fa-solid fa-pen-to-square"></i>プロフィール編集</router-link>
 </main>
@@ -60,7 +68,8 @@ export default {
             framework: "",
             github: "",
             qiita: "",
-            lapras: ""
+            lapras: "",
+            twitter: ""
         }
     },
     created(){
@@ -78,7 +87,8 @@ export default {
                             this.framework = responseData.framework
                             this.github = responseData.github
                             this.qiita = responseData.qiita
-                            this.lapras = responseData.lapras
+                            this.lapras = responseData.lapras,
+                            this.twitter = responseData.twitter
                         }
                     }
                 })

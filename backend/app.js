@@ -144,6 +144,7 @@ app.put('/api/user/portfolio/edit', (req, res) => {
   jsonData[editData].github = data.github;
   jsonData[editData].qiita = data.qiita;
   jsonData[editData].lapras = data.lapras;
+  jsonData[editData].twitter = data.twitter;
   const updatedJsonData = JSON.stringify(jsonData, null, '\t');
   fs.writeFileSync('profile.json', updatedJsonData);
 })
@@ -181,7 +182,8 @@ app.post('/api/user/registration', (req, res) => {
             framework: date.framework,
             github: date.github,
             qiita: date.qiita,
-            lapras: date.lapras
+            lapras: date.lapras,
+            twitter: date.twitter
           });
           // 配列をJSON文字列に変換する
           let newData = JSON.stringify(arr, null, '\t');
