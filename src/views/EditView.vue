@@ -83,15 +83,21 @@ export default {
             this.$router.push('/');
         },
         portDelete(){
-            const id = parseInt(this.$route.params.id);
-            axios.delete('http://localhost:3000/api/port/delete', id)
-                .then((response) => {
-                    console.log(response);
+            const result = window.confirm('メッセージを削除してよろしいですか？')
+            if(result){
+                // URLのパスからIDを取得
+                const id = parseInt(this.$route.params.id)
+                axios.delete("http://localhost:3000/api/port/delete", id)
+                .then(response => {
+                    this.data = response.data
                 })
-                .catch((error) => {
-                    console.log(error);
+                .catch(error => {
+                    console.log(error)
                 })
-            this.$router.push('/');
+                this.$router.push('/')
+            }else{
+                return
+            }
         }
     }
 }
