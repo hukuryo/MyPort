@@ -1,6 +1,5 @@
 <template>
 <main class="container">
-    <h5>{{ this.errorMessage }}</h5>
     <div class="my-3 p-3 bg-body rounded shadow-sm">
         <h6 class="border-bottom pb-2 mb-0"><i class="fa-solid fa-address-card"></i>プロフィール</h6>
         <div class="d-flex text-muted pt-3">
