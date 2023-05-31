@@ -2,7 +2,6 @@
   <div class="album py-5 bg-light">
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        <h5>{{ this.errorMessage }}</h5>
         <div class="col" v-for="item in userPortsData" :key="item.id">
           <div class="card shadow-sm">
             <div class="card-body">
@@ -41,13 +40,11 @@ export default {
       axios.get("http://localhost:3000/api/port/get")
         .then((response) => {
           try {
-            // if(response.data.length === 0){
-            //   this.errorMessage = "メッセージはありません。"
-            // }
-            console.log(response.data.length)
-            this.userPortsData = response.data.filter(
-              (item) => item.postUserId === postUserLocalData.id
-            );
+            for(let i = 0; i < response.data.length; i++){
+              if(postUserLocalData.id == response.data[i].postUserId.id){
+                this.userPortsData.push(response.data[i])
+              }
+            }
           } catch (e) {
             return;
           }

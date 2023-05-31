@@ -71,9 +71,10 @@ app.post('/api/port/save', (req, res) => {
           // ファイルをJSONパースして配列に変換する
           let arr = JSON.parse(data);
           // 新しいオブジェクトを作成して配列に追加する
+          console.log(requestBodyData.postUserId)
           arr.push({
             id: arrayLength + 1,
-            postUserId: requestBodyData.postUserId.id,
+            postUserId: requestBodyData.postUserId,
             ClipUserName: requestBodyData.ClipUserName,
             PortName: requestBodyData.PortName,
             PortUrl: requestBodyData.PortUrl,

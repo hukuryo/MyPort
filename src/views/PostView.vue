@@ -14,7 +14,6 @@
                     <input type="text" class="form-control" id="PortName" name="PortName" placeholder="PortFolioName" v-model="PortName"/>
                     </div>
                 </div>
-                
                 <!-- PortUrl -->
                 <div class="col-12">
                     <label for="text" class="form-label"><i class="fa-solid fa-earth-americas"></i>URL</label>
