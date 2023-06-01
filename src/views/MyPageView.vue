@@ -59,7 +59,6 @@
 import axios from "axios";
 const postUserName = JSON.parse(localStorage.getItem("vuex"))
 
-
 export default {
     data(){
         return{
