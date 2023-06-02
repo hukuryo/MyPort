@@ -24,6 +24,7 @@
                 </div>
             </form>
         </div>
+        <router-link class="btn btn-success" to="/">戻る</router-link>
     </main>
 </div>
 </template>
