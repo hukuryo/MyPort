@@ -1,15 +1,6 @@
 <template>
   <div class="album py-5 bg-light">
     <div class="container">
-      <div>
-        <button @click="openModal">モーダルを開く</button>
-        <div v-if="modalVisible" class="modal">
-          <div class="modal-content">
-            <span class="close" @click="closeModal">&times;</span>
-            <p>モーダルのコンテンツ</p>
-          </div>
-        </div>
-      </div>
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         <div class="col" v-for="item in userPortsData" :key="item.id">
           <div class="card shadow-sm">
