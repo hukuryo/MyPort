@@ -38,24 +38,11 @@
 <main>
 
     <div class="row g-5">
-    <div class="col-md-6">
-        <h2></h2>
-        <p>Ready to beyond the starter template? Check out these open source projects that you can quickly duplicate to a new GitHub repository.</p>
-        <ul class="icon-list">
-        <li><a href="https://github.com/twbs/bootstrap-npm-starter" rel="noopener" target="_blank">Bootstrap npm starter</a></li>
-        <li class="text-muted">Bootstrap Parcel starter (coming soon!)</li>
-        </ul>
-    </div>
-
-    <div class="col-md-6">
-        <h2>ポートフォリオ</h2>
-        <ul class="icon-list">
-        <li><a href="/docs/5.0/getting-started/introduction/">Bootstrap quick start guide</a></li>
-        <li><a href="/docs/5.0/getting-started/webpack/">Bootstrap Webpack guide</a></li>
-        <li><a href="/docs/5.0/getting-started/parcel/">Bootstrap Parcel guide</a></li>
-        <li><a href="/docs/5.0/getting-started/build-tools/">Contributing to Bootstrap</a></li>
-        </ul>
-    </div>
+        <div class="col-md-6">
+            <ul class="icon-list">
+                <li class="text-muted">{{ this.PortName }}</li>
+            </ul>
+        </div>
     </div>
 </main>
 </div>
