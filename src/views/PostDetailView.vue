@@ -27,21 +27,30 @@
         <router-link class="btn btn-success" to="/">戻る</router-link>
     </main>
 </div> -->
-
-
-
 <div class="col-lg-8 mx-auto p-3 py-md-5">
-<header class="d-flex align-items-center pb-3 mb-5 border-bottom">
-    <span class="fs-4">ポートフォリオ詳細</span>
-</header>
+    <span class="d-flex align-items-center pb-3 mb-5 border-bottom">ポートフォリオ詳細</span>
+    <main>
+        <div class="container py-4">
+            <div class="p-5 mb-4 bg-light rounded-3">
+                <div class="container-fluid py-5 ">
+                    <h5 class="fw-bold">説明</h5>
+                    <p class="col-md-8 fs-4">{{ this.PortContent }}</p>
+                </div>
+            </div>
 
-<main>
-
-    <div class="row g-5">
-        <div class="col-md-6">
-            <ul class="icon-list">
-                <li class="text-muted">{{ this.PortName }}</li>
-            </ul>
+            <div class="row align-items-md-stretch">
+                <div class="col-md-6">
+                    <div class="h-100 p-5 bg-light border rounded-3">
+                        <h5 class="fw-bold">URL</h5>
+                        <p>{{ this.PortUrl }}</p>
+                    </div>
+                </div>
+            <div class="col-md-6">
+                <div class="h-100 p-5 bg-light border rounded-3">
+                    <h5 class="fw-bold">ポートフォリオ名</h5>
+                    <p>{{ this.PortName }}</p>
+                </div>
+            </div>
         </div>
     </div>
 </main>
