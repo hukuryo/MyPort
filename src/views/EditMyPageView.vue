@@ -56,6 +56,14 @@
                     <input type="text" class="form-control" placeholder="LAPRAS" v-model="lapras"/>
                 </div>
             </div>    
+            <div class="d-flex text-muted pt-3">
+                <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+                    <div class="d-flex justify-content-between" style="margin-bottom: 5px;">
+                        <span class="d-block">Twitter</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Twitter" v-model="twitter"/>
+                </div>
+            </div>    
         </div>
         <button class="w-100 btn btn-primary btn-lg" type="submit" @click="profileSave">プロフィールを保存</button>
     </form>
@@ -74,7 +82,8 @@ export default {
             framework: "",
             github: "",
             qiita: "",
-            lapras: ""
+            lapras: "",
+            twitter: ""
         }
     },
     created(){
@@ -93,6 +102,7 @@ export default {
                             this.github = responseData.github
                             this.qiita = responseData.qiita
                             this.lapras = responseData.lapras
+                            this.twitter = responseData.twitter
                         }
                     }
                 })

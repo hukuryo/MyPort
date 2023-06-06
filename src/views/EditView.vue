@@ -5,7 +5,7 @@
         <h2>ポートフォリオ編集</h2>
     </div>
     <div class="form-body">
-        <div class="">
+        <div>
             <form class="needs-validation" novalidate="" action="http://localhost:3000/api/port/edit" method="PUT">
                 <div class="row g-3">
                     <div class="col-12">
