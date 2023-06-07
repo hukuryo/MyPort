@@ -42,7 +42,7 @@ app.get('/api/port/get', (req, res) => {
   }
 });
 
-app.get('/api/port/detail/get', (req, res) => {
+app.get('/api/user/detail/get', (req, res) => {
   try {
     //データを取りだす
     const bufferData = fs.readFileSync('users.json');
@@ -143,7 +143,7 @@ app.post('/api/user/profile/save', (req, res) => {
 })
 
 // プロフィール編集
-app.put('/api/user/portfolio/edit', (req, res) => {
+app.put('/api/user/profile/edit', (req, res) => {
   const bufferData = fs.readFileSync('ports.json');
   let jsonData = JSON.parse(bufferData);
   const data = req.body;

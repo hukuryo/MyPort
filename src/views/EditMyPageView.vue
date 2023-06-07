@@ -65,7 +65,7 @@
                 </div>
             </div>    
         </div>
-        <button class="w-100 btn btn-primary btn-lg" type="submit" @click="profileSave">プロフィールを保存</button>
+        <button class="w-100 btn btn-primary btn-lg" type="submit" @click="editPortFolio">プロフィールを保存</button>
     </form>
 </main>
 </template>
@@ -91,7 +91,7 @@ export default {
     },
     methods: {
         getPortFolio() {  
-            axios.get("http://localhost:3000/api/port/detail/get")
+            axios.get("http://localhost:3000/api/user/detail/get")
                 .then(response => {
                     for(let i = 0; i <= response.data.length; i++){
                         const name = response.data[i].username;
@@ -111,15 +111,16 @@ export default {
                 })
         },
         editPortFolio(){
-            const postUserId = JSON.parse(localStorage.getItem("vuex"))
-            const id = postUserId.id
-            let portsContent = {
-                id: id,
-                PortName: this.PortName,
-                PortUrl: this.PortUrl,
-                PortContent: this.PortContent,
-            };
-            axios.put('http://localhost:3000/api/port/edit', portsContent)
+            let userContent = {
+                username: this.username,
+                pass: this.pass,
+                skill: this.skill,
+                framework: this.framework,
+                github: this.github,
+                qiita: this.qiita,
+                lapras: this.lapras
+            }
+            axios.put('http://localhost:3000/api/user/profile/edit', userContent)
                 .then((response) => {
                         console.log(response);
                         this.$router.push('/');
