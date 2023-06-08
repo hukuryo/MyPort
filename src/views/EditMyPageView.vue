@@ -112,13 +112,14 @@ export default {
         },
         editPortFolio(){
             let userContent = {
-                username: this.username,
+                username: postUserName.username,
                 pass: this.pass,
                 skill: this.skill,
                 framework: this.framework,
                 github: this.github,
                 qiita: this.qiita,
-                lapras: this.lapras
+                lapras: this.lapras,
+                twitter: this.twitter
             }
             axios.put('http://localhost:3000/api/user/profile/edit', userContent)
                 .then((response) => {

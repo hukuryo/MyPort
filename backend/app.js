@@ -147,14 +147,13 @@ app.put('/api/user/profile/edit', (req, res) => {
   const bufferData = fs.readFileSync('ports.json');
   let jsonData = JSON.parse(bufferData);
   const data = req.body;
-  const editData = data.id - 1
-  jsonData[editData].username = data.username;
-  jsonData[editData].skill = data.skill;
-  jsonData[editData].framework = data.framework;
-  jsonData[editData].github = data.github;
-  jsonData[editData].qiita = data.qiita;
-  jsonData[editData].lapras = data.lapras;
-  jsonData[editData].twitter = data.twitter;
+  jsonData.username = data.username;
+  jsonData.skill = data.skill;
+  jsonData.framework = data.framework;
+  jsonData.github = data.github;
+  jsonData.qiita = data.qiita;
+  jsonData.lapras = data.lapras;
+  jsonData.twitter = data.twitter;
   const updatedJsonData = JSON.stringify(jsonData, null, '\t');
   fs.writeFileSync('profile.json', updatedJsonData);
 })
