@@ -93,8 +93,8 @@ export default {
         getPortFolio() {  
             axios.get("http://localhost:3000/api/user/detail/get")
                 .then(response => {
-                    for(let i = 0; i <= response.data.length; i++){
-                        const name = response.data[i].username;
+                    for(let i = 0; i < response.data.length; i++){
+                        const name = response.data[i].username
                         if(postUserName.username == name){
                             const responseData = response.data[i]
                             this.skill = responseData.skill
@@ -113,7 +113,6 @@ export default {
         editPortFolio(){
             let userContent = {
                 username: postUserName.username,
-                pass: this.pass,
                 skill: this.skill,
                 framework: this.framework,
                 github: this.github,
@@ -124,6 +123,7 @@ export default {
             axios.put('http://localhost:3000/api/user/profile/edit', userContent)
                 .then((response) => {
                         console.log(response);
+                        console.log("dfis")
                         this.$router.push('/');
                     })
                     .catch((error) => {

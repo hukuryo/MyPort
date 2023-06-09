@@ -1,7 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
-const fs = require('fs')
+const fs = require('fs');
+const { error } = require('console');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -144,19 +145,38 @@ app.post('/api/user/profile/save', (req, res) => {
 
 // プロフィール編集
 app.put('/api/user/profile/edit', (req, res) => {
-  const bufferData = fs.readFileSync('ports.json');
-  let jsonData = JSON.parse(bufferData);
-  const data = req.body;
-  jsonData.username = data.username;
-  jsonData.skill = data.skill;
-  jsonData.framework = data.framework;
-  jsonData.github = data.github;
-  jsonData.qiita = data.qiita;
-  jsonData.lapras = data.lapras;
-  jsonData.twitter = data.twitter;
-  const updatedJsonData = JSON.stringify(jsonData, null, '\t');
-  fs.writeFileSync('profile.json', updatedJsonData);
-})
+  fs.readFile('users.json', (err, data) => {
+      if (err) {
+          console.error(err);
+          res.status(500).send('Internal Server Error');
+          return;
+      }
+
+      const jsonData = JSON.parse(data);
+      const updatedData = {
+          username: req.body.username,
+          skill: req.body.skill,
+          framework: req.body.framework,
+          github: req.body.github,
+          qiita: req.body.qiita,
+          lapras: req.body.lapras,
+          twitter: req.body.twitter
+      };
+
+      Object.assign(jsonData, updatedData);
+
+      const updatedJsonData = JSON.stringify(jsonData, null, '\t');
+      fs.writeFile('users.json', updatedJsonData, (err) => {
+          if (err) {
+              console.error(err);
+              res.status(500).send('Internal Server Error');
+              return;
+          }
+
+          res.status(200).send('Profile updated successfully');
+      });
+  });
+});
 
 app.post('/api/user/registration', (req, res) => {
   try {

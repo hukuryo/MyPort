@@ -76,10 +76,11 @@ export default {
     },
     methods: {
         getPortFolio() {  
-            axios.get("http://localhost:3000/api/port/detail/get")
+            axios.get("http://localhost:3000/api/user/detail/get")
                 .then(response => {
                     for(let i = 0; i <= response.data.length; i++){
                         const name = response.data[i].username;
+                        console.log(response.data)
                         if(postUserName.username == name){
                             const responseData = response.data[i]
                             this.skill = responseData.skill
