@@ -8,12 +8,19 @@
               <p class="card-text"><i class="fa-solid fa-book" style="margin-right: 5px;"></i>{{ item.PortName }}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <router-link :to="{ name: 'postDetail', params: { id: item.id }}" class="btn btn-sm btn-outline-secondary"><i class="fa-sharp fa-regular fa-file" style="margin-right: 2px;"></i>View</router-link>
+                  <button @click="openModal()" class="btn btn-sm btn-outline-secondary"><i class="fa-sharp fa-regular fa-file" style="margin-right: 2px;"></i>モーダルを表示</button>
                   <router-link :to="{ name: 'postEdit', params: { id: item.id }}" class="btn btn-sm btn-outline-secondary"><i class="fa-sharp fa-solid fa-file-pen" style="margin-right: 2px;"></i>Edit</router-link>
                 </div>
               </div>
             </div>
           </div>
+          <div id="modal">
+          <div id="modal-content">
+            <h2>{{ item.PortName }}</h2>
+            <p>{{ item.PortContent  }}</p>
+            <button @click="closeModal()">閉じる</button>
+          </div>
+        </div>
         </div>
       </div>
     </div>
@@ -55,10 +62,15 @@ export default {
         });
     },
     openModal() {
-      this.modalVisible = true;
+      const modal = document.getElementById("modal");
+      // モーダルを表示する
+      modal.style.display = "block";
     },
     closeModal() {
-      this.modalVisible = false;
+      // モーダル要素を取得
+      const modal = document.getElementById("modal");
+      // モーダルを非表示にする
+      modal.style.display = "none";
     },
   },
 };
@@ -98,4 +110,24 @@ export default {
     text-decoration: none;
     cursor: pointer;
   }
+
+  /* モーダルのスタイル */
+    #modal {
+      display: none; /* 最初は非表示にする */
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5); /* 半透明の背景色 */
+      z-index: 9999;
+    }
+    
+    #modal-content {
+      background-color: #fff;
+      width: 300px;
+      height: 200px;
+      margin: 100px auto;
+      padding: 20px;
+    }
 </style>

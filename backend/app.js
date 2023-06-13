@@ -151,7 +151,6 @@ app.put('/api/user/profile/edit', (req, res) => {
           res.status(500).send('Internal Server Error');
           return;
       }
-
       const jsonData = JSON.parse(data);
       const updatedData = {
           username: req.body.username,
@@ -162,9 +161,7 @@ app.put('/api/user/profile/edit', (req, res) => {
           lapras: req.body.lapras,
           twitter: req.body.twitter
       };
-
       Object.assign(jsonData, updatedData);
-
       const updatedJsonData = JSON.stringify(jsonData, null, '\t');
       fs.writeFile('users.json', updatedJsonData, (err) => {
           if (err) {
@@ -172,7 +169,6 @@ app.put('/api/user/profile/edit', (req, res) => {
               res.status(500).send('Internal Server Error');
               return;
           }
-
           res.status(200).send('Profile updated successfully');
       });
   });
