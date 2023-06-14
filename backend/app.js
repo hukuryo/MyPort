@@ -166,7 +166,7 @@ app.put('/api/user/profile/edit', (req, res) => {
       fs.writeFile('users.json', updatedJsonData, (err) => {
           if (err) {
               console.error(err);
-              res.status(500).send('Internal Server Error');
+              res.status(500).send('Internal Server Error');  
               return;
           }
           res.status(200).send('Profile updated successfully');

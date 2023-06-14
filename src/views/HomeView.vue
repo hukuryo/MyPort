@@ -14,12 +14,21 @@
               </div>
             </div>
           </div>
-          <div id="modal">
-          <div id="modal-content">
-            <h2>{{ item.PortName }}</h2>
-            <p>{{ item.PortContent  }}</p>
-            <button @click="closeModal()">閉じる</button>
-          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Modal body text goes here.</p>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @click="closeModal()">Close</button>
         </div>
         </div>
       </div>
@@ -62,72 +71,62 @@ export default {
         });
     },
     openModal() {
-      const modal = document.getElementById("modal");
-      // モーダルを表示する
+      var modal = document.querySelector(".modal");
+      var modalContent = document.querySelector(".modal-dialog");
+
       modal.style.display = "block";
+
+      // アニメーションクラスを追加してフェードインさせる
+      modalContent.classList.add("fadeIn");
     },
     closeModal() {
-      // モーダル要素を取得
-      const modal = document.getElementById("modal");
-      // モーダルを非表示にする
-      modal.style.display = "none";
-    },
+      var modal = document.querySelector(".modal");
+      var modalContent = document.querySelector(".modal-dialog");
+
+      // アニメーションクラスを削除して非表示にする
+      modalContent.classList.remove("fadeIn");
+
+      setTimeout(function() {
+        modal.style.display = "none";
+      }, 300); // アニメーション時間と同じ時間を設定
+    }
   },
 };
 </script>
 
 <style scoped>
   .modal {
-    display: none; /* 最初は非表示 */
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4); /* 背景を半透明にする */
-  }
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+}
 
-  .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-  }
+.modal-content {
+  background-color: #fff;
+  width: 300px;
+  height: 200px;
+  margin: 100px auto;
+  padding: 20px;
+  opacity: 0;
+  transform: translateY(-50px);
+  animation-name: modalFadeIn;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+}
 
-  .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+@keyframes modalFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
   }
-
-  .close:hover,
-  .close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
-
-  /* モーダルのスタイル */
-    #modal {
-      display: none; /* 最初は非表示にする */
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5); /* 半透明の背景色 */
-      z-index: 9999;
-    }
-    
-    #modal-content {
-      background-color: #fff;
-      width: 300px;
-      height: 200px;
-      margin: 100px auto;
-      padding: 20px;
-    }
+}
 </style>
