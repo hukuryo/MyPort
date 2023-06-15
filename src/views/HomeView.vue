@@ -14,22 +14,22 @@
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="modal" tabindex="-1">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Modal title</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <p>Modal body text goes here.</p>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @click="closeModal()">Close</button>
-        </div>
+          <div class="modal" tabindex="-1">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">{{ item.PortName }}</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <p>{{ item.PortContent }}</p>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @click="closeModal()">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
         </div>
       </div>
     </div>
@@ -73,19 +73,15 @@ export default {
     openModal() {
       var modal = document.querySelector(".modal");
       var modalContent = document.querySelector(".modal-dialog");
-
       modal.style.display = "block";
-
       // アニメーションクラスを追加してフェードインさせる
       modalContent.classList.add("fadeIn");
     },
     closeModal() {
       var modal = document.querySelector(".modal");
       var modalContent = document.querySelector(".modal-dialog");
-
       // アニメーションクラスを削除して非表示にする
       modalContent.classList.remove("fadeIn");
-
       setTimeout(function() {
         modal.style.display = "none";
       }, 300); // アニメーション時間と同じ時間を設定
